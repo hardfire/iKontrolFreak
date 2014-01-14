@@ -1,4 +1,3 @@
-//http://stackoverflow.com/questions/15144600/skip-track-using-media-keys
 // Compile: gcc -o control control.m -framework IOKit -framework Cocoa
 
 #import <Cocoa/Cocoa.h>
