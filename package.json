@@ -1,0 +1,28 @@
+{
+  "name": "KontrolFreak",
+  "version": "0.0.1",
+  "description": "Control your Mac remotely over the network",
+  "main": "server.js",
+  "dependencies": {
+    "socket.io": "~0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hardfire/iKontrolFreak"
+  },
+  "keywords": [
+    "mac",
+    "control"
+  ],
+  "author": "Avinash Kundaliya",
+  "license": "MPL",
+  "bugs": {
+    "url": "https://github.com/hardfire/iKontrolFreak/issues"
+  },
+  "homepage": "https://github.com/hardfire/iKontrolFreak"
+}
