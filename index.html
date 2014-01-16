@@ -2,40 +2,52 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Your Mac Controller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  minimum-scale=1.0">
+    <meta name="viewport" content="user-scalable=0">
+    <title>iKontrolFreak</title>
+    <style type="text/css">
+      body{margin:0px; padding:0px; font-family:arial; background:#2C3E50}
+      ul{margin:10px; padding:0px;}
+      ul li{margin:1%; padding:0px; list-style-type:none; float:left; display:inline; width:48%;}
+      ul li a{display:block; text-decoration:none; background:#1ABC9C; color:#ECF0F1;  padding:20px 10px; text-align:center; font-size:32px; border-radius:20%;}
+      ul li a:visited{color:#ECF0F1;}
+      ul li a:active{background:#E67E22;}
+      #status{opacity:0.7; background:#000; color:#aaa; position:absolute; bottom:0px; width:100%; text-align:center; padding:3px 0; font-weight:normal;}
+    </style>
   </head>
   <body>
     <div id="status"> Not Connected </div>
     <ul id="controller">
-      <li><a href="#" data-control="play">Play / Pause</a></li>
-      <li><a href="#" data-control="next">Next</a></li>
-      <li><a href="#" data-control="prev">Prev</a></li>
-      <li><a href="#" data-control="mute">Mute</a></li>
-      <li><a href="#" data-control="soundUp">Volume Up</a></li>
-      <li><a href="#" data-control="soundDown">VolumeDown</a></li>
+      <li><a href="#" data-control="play">►ll</a></li
+      ><li><a href="#" data-control="next">►►</a></li
+      ><li><a href="#" data-control="prev">◄◄</a></li
+      ><li><a href="#" data-control="mute">Mute</a></li
+      ><li><a href="#" data-control="soundUp">Vol+</a></li
+      ><li><a href="#" data-control="soundDown">Vol-</a></li>
     </ul>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" charset="utf-8">
       var socket = io.connect();
 
       // set status messages
+      statusElement = document.getElementById('status');
       socket.on('connect', function(){
-        document.getElementById('status').innerHTML = "Status: Connected";
+        statusElement.innerHTML = "Status: Connected";
       });
       socket.on('connecting', function(){
-        document.getElementById('status').innerHTML = "Status: Connecting";
+        statusElement.innerHTML = "Status: Connecting";
       });
       socket.on('disconnect', function(){
-        document.getElementById('status').innerHTML = "Status: Disconnected";
+        statusElement.innerHTML = "Status: Disconnected";
       });
       socket.on('reconnect', function(){
-        document.getElementById('status').innerHTML = "Status: Connected";
+        statusElement.innerHTML = "Status: Connected";
       });
       socket.on('reconnecting', function(){
-        document.getElementById('status').innerHTML = "Status: Connecting";
+        statusElement.innerHTML = "Status: Connecting";
       });
       socket.on('reconnect_failed', function(){
-        document.getElementById('status').innerHTML = "Status: Connection Failed";
+        statusElement.innerHTML = "Status: Connection Failed";
       });
 
       //event handler for the keys
@@ -43,9 +55,7 @@
         function(e) {
           var control = e.target;
           if (control.tagName === "a" || control.tagName === "A")
-            socket.emit('control', 
-              { type : control.getAttribute('data-control') }
-            );
+            socket.emit('control', { type : control.getAttribute('data-control') });
         }
       );
     </script>
